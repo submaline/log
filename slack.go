@@ -5,12 +5,12 @@ import (
 )
 
 type SlackClient struct {
-	channel string
+	Channel string
 	*slack.Client
 }
 
 func (c *SlackClient) SendMsg(title string, source string, msg string) error {
-	_, _, err := c.PostMessage(c.channel, slack.MsgOptionBlocks(
+	_, _, err := c.PostMessage(c.Channel, slack.MsgOptionBlocks(
 		slack.NewHeaderBlock(slack.NewTextBlockObject(slack.PlainTextType, title, true, false)),
 		slack.NewContextBlock("",
 			slack.NewTextBlockObject(slack.PlainTextType, source, true, false),
